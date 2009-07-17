@@ -50,16 +50,19 @@ public class Event implements Protocol, Serializable {
 		return createDataEvent(aSubject, null);
 	}
 
+	//创建数据事件  设置主题 
 	public static Event createDataEvent(String aSubject, Map theAttributes) {
 		Event dataEvent = new Event(E_DATA, theAttributes);
 		dataEvent.setField(P_SUBJECT, aSubject);
 		return dataEvent;
 	}
 
+	//拿到事件类型
 	public String getEventType() {
 		return getField(P_EVENT);
 	}
 
+	//拿到事件主题
 	public String getSubject() {
 		return getField(P_SUBJECT);
 	}
@@ -98,6 +101,7 @@ public class Event implements Protocol, Serializable {
 
 	/**
 	 * Convert to HTTP query string.
+	 * 拼出一个http  get请求  id=1&name=xxx&age=13$v=34  类似这样的
 	 */
 	public String toQueryString() {
 		String queryString = "";
@@ -113,6 +117,8 @@ public class Event implements Protocol, Serializable {
 		return queryString;
 	}
 
+	//转换成xml格式  strict  true的话会把其中value的特殊字符转换成html的格式 < > \' \" \\ &
+	//转成 <event  id="id"  name="name" />
 	public String toXML(boolean strict) {
 		String xmlString = "<event ";
 		for (Iterator iter = getFieldNames(); iter.hasNext();) {
@@ -125,6 +131,7 @@ public class Event implements Protocol, Serializable {
 		return xmlString;
 	}
 
+	//默认xml不转成html特殊字符
 	public String toXML() {
 		return toXML(false);
 	}
