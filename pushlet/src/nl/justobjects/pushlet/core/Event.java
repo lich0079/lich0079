@@ -38,7 +38,7 @@ public class Event implements Protocol, Serializable {
 		setField(P_TIME, System.currentTimeMillis() / 1000);
 	}
 
-	//初始化方法 设置属性  因为没有提供默认的时间类型， 所以属性中必须包含类型信息
+	//初始化方法 设置属性  因为没有提供默认的事件类型， 所以属性中必须包含类型信息
 	public Event(Map theAttributes) {
 		if (!theAttributes.containsKey(P_EVENT)) {
 			throw new IllegalArgumentException(P_EVENT + " not found in attributes");

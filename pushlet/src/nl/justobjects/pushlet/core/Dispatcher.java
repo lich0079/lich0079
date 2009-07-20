@@ -11,6 +11,7 @@ import nl.justobjects.pushlet.util.Log;
  * @author Just van den Broecke - Just Objects &copy;
  * @version $Id: Dispatcher.java,v 1.8 2007/11/23 14:33:07 justb Exp $
  */
+//这2个接口都是用来存储字符串常量的  没有方法定义
 public class Dispatcher implements Protocol, ConfigDefs {
 	/**
 	 * Singleton pattern:  single instance.
@@ -19,6 +20,8 @@ public class Dispatcher implements Protocol, ConfigDefs {
 
 	static {
 		try {
+		    //静态初始化方法 去配置文件找实例 要不就默认的nl.justobjects.pushlet.core.Dispatcher
+		    //此处可以实现配置扩展新的Dispatcher类
 			instance = (Dispatcher) Config.getClass(DISPATCHER_CLASS, "nl.justobjects.pushlet.core.Dispatcher").newInstance();
 			Log.info("Dispatcher created className=" + instance.getClass());
 		} catch (Throwable t) {
@@ -42,6 +45,7 @@ public class Dispatcher implements Protocol, ConfigDefs {
 	/**
 	 * Send event to all subscribers.
 	 */
+	//向session中所有订阅者广播事件，每个都是复制的事件
 	public synchronized void broadcast(Event event) {
 		// Get active sessions
 		Session[] sessions = getSessions();
@@ -60,6 +64,7 @@ public class Dispatcher implements Protocol, ConfigDefs {
 	/**
 	 * Send event to subscribers matching Event subject.
 	 */
+	//向订阅了该事件的人发送  并设置事件的订阅ID 和label
 	public synchronized void multicast(Event event) {
 		// Get snapshot active sessions
 		Session[] sessions = getSessions();
@@ -98,6 +103,7 @@ public class Dispatcher implements Protocol, ConfigDefs {
 	/**
 	 * Send event to specific subscriber.
 	 */
+	//向指定的sessionID发送事件
 	public synchronized void unicast(Event event, String aSessionId) {
 		// Get subscriber to send event to
 		Session session = SessionManager.getInstance().getSession(aSessionId);
@@ -120,6 +126,7 @@ public class Dispatcher implements Protocol, ConfigDefs {
 	/**
 	 * Stop Dispatcher.
 	 */
+	//stop的时候向所有session发送E_ABORT事件
 	public void stop() {
 		// Send abort control event to all subscribers.
 		Log.info("Dispatcher stopped: broadcast abort to all subscribers");
