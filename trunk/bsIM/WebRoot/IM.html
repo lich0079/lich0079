@@ -21,9 +21,12 @@
 		<script type="text/javascript" src="js/ajax-pushlet-client.js"></script>
 		<script type="text/javascript" src="js/IMui.js"></script>
 		<script type="text/javascript">
-		
-    PL.setDebug(false);//非debug模式
-
+	//非debug模式
+    PL.setDebug(false);
+    
+    //在线用户  里面装的就是树节点（的引用）
+    onlines = new Array();
+    
     // Pushlet Event Callback from Server
     function onEvent(event) {
         //如果是登陆的消息 并且不是自己发出的 并且 树中没有这个id的节点
@@ -31,12 +34,21 @@
                 && PL.sessionId != event.get('p_from')
                 && Ext.getCmp('im-tree').getNodeById(event.get('p_from')) == null) {
             //就添加节点
-            Ext.getCmp('im-tree').root.appendChild(new Ext.tree.TreeNode({
+            var node4add=new Ext.tree.TreeNode({
                         id : event.get('p_from'),
-                        text : 'USER_' + event.get('p_from'),
+                        text : event.get('name'),
                         iconCls : 'user',
                         leaf : true
-                    }));
+                    });
+            //给节点添加一个时间戳属性，以后用来判断是否在线  这个属性会不断刷新  长时间不刷新就说明掉了
+            node4add.aliveTS=event.get('p_time');
+            Ext.getCmp('im-tree').root.appendChild(node4add);
+            //添加到在线数组中
+            onlines.push(node4add);
+        }else if(event.getSubject() == '/user/login' && PL.sessionId != event.get('p_from')
+                && Ext.getCmp('im-tree').getNodeById(event.get('p_from')) != null ){
+                //如果是登陆的消息 并且不是自己发出的 并且 树中有这个id的节点  就更新他的在线时间戳
+                Ext.getCmp('im-tree').getNodeById(event.get('p_from')).aliveTS=event.get('p_time');
         }
         //如果是聊天的信息   
         if (event.getSubject() == '/user/chat') {
@@ -44,16 +56,16 @@
             //打开聊天窗口
             showChatWindow(node);
             var now = new Date();
-            var time = "" + now.getYear() + "-" + (now.getMonth() + 1) + "-"
-                    + now.getDate() + " " + now.getHours() + ":"
-                    + now.getMinutes() + ":" + now.getSeconds() + "";
+            var time = " " + now.getHours()
+                                    + ":" + now.getMinutes() + ":"
+                                    + now.getSeconds() + "";
             //解码回车符  消息在发送的时候对回车符进行了替换 现在替换回来 否则在经过服务器的时候回车符会丢失
             var smessage = event.get('message');
             var reg = new RegExp(PL.sessionId, "g"); // 创建正则RegExp对象
             smessage = smessage.replace(reg, '\n');
             //把新消息添加到历史信息栏
-            Ext.get('cw_hw_' + node.id).dom.value += 'User_' + PL.sessionId
-                    + ' ' + time + ' 说 \n' + smessage + '\n\n';
+            Ext.get('cw_hw_' + node.id).dom.value += node.text
+                    + '  ' + time + '   \n' + smessage + '\n\n';
 
         }
     }
@@ -65,16 +77,30 @@
         PL.joinListen('/pushlet/ping,/user/login,/user/chat');
     }
    
-   //借助一定周期的RefreshAck事件  发送我的在线信息  是为了提供给刚上线的user
+   //借助一定周期的RefreshAck事件  发送我的在线信息  
+   //是为了提供给刚上线的user 并监控在线用户的时间戳是否较新  否则判断为掉线 踢掉
+   //Refresh是为了让服务器知道client没死
    function onRefreshAck(event){
+        for(var i=0;i<onlines.length;i++){
+            if((event.get('p_time')- onlines[i].aliveTS)>15){
+                Ext.Msg.show({
+                    msg:onlines[i].text+'离开了',
+                    modal:false
+                });
+              // alert('离开了');
+                onlines[i].remove();//从树上移除
+                onlines.remove(onlines[i]);//从在线用户移除
+            }
+        }
         publish();
    }
-   
+   //发布上线信息
+    function publish() {
+        PL.publish('/user/login', 'name='+username);
+    }
    //上线后马上发布我的上线信息
    function onJoinListenAck(event){
-	   if(event.get('p_id')){
 	    publish();
-	   }
    }
    //打开聊天窗口
    function showChatWindow(node) {
@@ -108,14 +134,11 @@
                             PL.publish('/user/chat','p_to='+ node.id+ '&message='+ smessage);
                             //得到当前时间
                             var now = new Date()
-                            var time = "" + now.getYear() + "-"
-                                    + (now.getMonth() + 1) + "-"
-                                    + now.getDate() + " " + now.getHours()
+                            var time = " " + now.getHours()
                                     + ":" + now.getMinutes() + ":"
                                     + now.getSeconds() + "";
                             //修改聊天历史框
-                            Ext.get('cw_hw_' + node.id).dom.value += 'User_'
-                                    + PL.sessionId + ' ' + time + ' 说 \n'
+                            Ext.get('cw_hw_' + node.id).dom.value += username + '  ' + time + ' \n'
                                     + Ext.get('cw_iw_' + node.id).dom.value
                                     + '\n\n';
                             //清空输入框
@@ -124,7 +147,7 @@
                     }],
                     items : [{
                                 xtype : "fieldset",
-                                title : node.id,
+                                title : '消息框',
                                 autoHeight : true,
                                 hideBorders : true,
                                 items : [{
@@ -139,6 +162,7 @@
                             }, {
                                 xtype : "fieldset",
                                 hideBorders : true,
+                                title : '输入框',
                                 autoHeight : true,
                                 items : [{
                                             id : 'cw_iw_' + node.id,
@@ -161,14 +185,11 @@
                             PL.publish('/user/chat','p_to='+ node.id+ '&message='+ smessage);
                             //得到当前时间
                             var now = new Date()
-                            var time = "" + now.getYear() + "-"
-                                    + (now.getMonth() + 1) + "-"
-                                    + now.getDate() + " " + now.getHours()
+                            var time = " " + now.getHours()
                                     + ":" + now.getMinutes() + ":"
                                     + now.getSeconds() + "";
                             //修改聊天历史框
-                            Ext.get('cw_hw_' + node.id).dom.value += 'User_'
-                                    + PL.sessionId + ' ' + time + ' 说 \n'
+                            Ext.get('cw_hw_' + node.id).dom.value += username + '  ' + time + '  \n'
                                     + Ext.get('cw_iw_' + node.id).dom.value
                                     + '\n\n';
                             //清空输入框
@@ -181,14 +202,11 @@
         }
         chatwindow.show();
     }
-    //发布上线信息
-    function publish() {
-        PL.publish('/user/login', 'name=test');
-    }
+    
 		</script>
 	</head>
 
-	<body onload="PL._init();joinListen();">
+	<body onload="PL._init();">
 		<div id='mainUI'></div>
 	</body>
 </html>
