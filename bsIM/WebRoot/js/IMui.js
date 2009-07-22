@@ -57,6 +57,8 @@ Ext.onReady(function() {
 					constrainHeader : true,
 					closable : false,
 					draggable : true,
+                    x:100,
+                    y:100,
 					tbar : [{
 								tooltip : {
 									title : 'Rich Tooltips',

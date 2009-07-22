@@ -83,11 +83,12 @@
    function onRefreshAck(event){
         for(var i=0;i<onlines.length;i++){
             if((event.get('p_time')- onlines[i].aliveTS)>15){
-                Ext.Msg.show({
-                    msg:onlines[i].text+'离开了',
-                    modal:false
-                });
-              // alert('离开了');
+                var t=new Ext.ToolTip({
+			        target: 'mainUI',
+			        dismissDelay: 15000 ,
+			        html: onlines[i].text+'离开了'
+			    });
+			    t.showAt([50,80]);
                 onlines[i].remove();//从树上移除
                 onlines.remove(onlines[i]);//从在线用户移除
             }
@@ -118,6 +119,8 @@
                 plain : false,
                 modal : false,
                 resizable : true,
+                x:400+onlines.indexOf(node)*30,
+                y:100,
                 items : [{
                     xtype : "form",
                     frame : true,
