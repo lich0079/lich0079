@@ -47,7 +47,7 @@ Ext.onReady(function() {
 						});
 				var mainUI = new Ext.Window({
 					id : 'acc-win',
-					title : 'Accordion Window --' + username,
+					title : 'web IM -- ' + username,
 					width : 250,
 					height : 400,
 					renderTo : document.body,
