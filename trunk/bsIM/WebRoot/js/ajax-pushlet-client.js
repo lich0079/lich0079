@@ -701,6 +701,6 @@ function p_unsubscribe(aSid) {
  ***********************************************************************/
 
 // Initialize when page completely loaded
-//PL._addEvent(window, 'load', PL._init, false);
+//PL._addEvent(window, 'load', PL._init, false);//不注释掉的话 和ext的冲突  ext也注册了 window load 事件
 
 
