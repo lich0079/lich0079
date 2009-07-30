@@ -77,15 +77,17 @@
         PL.joinListen('/pushlet/ping,/user/login,/user/chat');
     }
    
-   //借助一定周期的RefreshAck事件  发送我的在线信息  
-   //是为了提供给刚上线的user 并监控在线用户的时间戳是否较新  否则判断为掉线 踢掉
+   //借助一定周期的RefreshAck事件  
+   //1、发送我的在线信息  
+   //一是为了提供给刚上线的user 二是可以刷新其他客户端上的我的在线时间戳
+   //2、并监控在线用户的时间戳是否较新  否则判断为掉线 踢掉
    //Refresh是为了让服务器知道client没死
    function onRefreshAck(event){
         for(var i=0;i<onlines.length;i++){
             //当前时间戳-上次更新的时间戳 如果间隔较大 说明没更新  掉了
             if((event.get('p_time')- onlines[i].aliveTS)>15){
                 var t=new Ext.ToolTip({
-			        target: 'mainUI',
+			        target: 'tipUI',
 			        dismissDelay: 15000 ,
 			        html: onlines[i].text+'离开了'
 			    });
@@ -211,6 +213,6 @@
 	</head>
 
 	<body onload="PL._init();">
-		<div id='mainUI'></div>
+		<div id='tipUI'></div>
 	</body>
 </html>
