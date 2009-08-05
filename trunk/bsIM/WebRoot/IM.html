@@ -106,6 +106,7 @@
    function onJoinListenAck(event){
 	    publish();
    }
+   
    //打开聊天窗口
    function showChatWindow(node) {
         var chatwindow=Ext.getCmp('cw_' + node.id);
@@ -204,7 +205,7 @@
                 }]
 
             });
-            Ext.getCmp( 'cw_iw_' + node.id).focus();
+            //Ext.getCmp( 'cw_iw_' + node.id).focus();无效
         }
         chatwindow.show();
     }

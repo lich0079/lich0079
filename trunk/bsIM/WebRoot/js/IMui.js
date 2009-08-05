@@ -3,48 +3,14 @@ Ext.onReady(function() {
 
 	Ext.QuickTips.init();
 
-    //登陆
+	// 登陆
 	function logon() {
 		Ext.Msg.prompt('登陆窗口', '输入你的名字', function(btn, text) {
-            //输入确定 并名字不为空
+			// 输入确定 并名字不为空
 			if (btn == 'ok' && text.trim().length > 0) {
-                //该用户的用户名 为全局变量 就一个
-                username=text.trim();
-				var tree = new Ext.tree.TreePanel({
-					id : 'im-tree',
-					title : 'Online Users',
-					loader : new Ext.tree.TreeLoader(),
-					rootVisible : false,
-					lines : false,
-					autoScroll : true,
-					tools : [{
-								id : 'refresh',
-								on : {
-									click : function() {
-										var tree = Ext.getCmp('im-tree');
-										tree.body.mask('Loading',
-												'x-mask-loading');
-										tree.root.reload();
-										tree.root.collapse(true, false);
-										setTimeout(function() { // mimic a
-													// server
-													// call
-													tree.body.unmask();
-													tree.root
-															.expand(true, true);
-												}, 1000);
-									}
-								}
-							}],
-					root : new Ext.tree.AsyncTreeNode({
-								text : 'Online',
-								children : []
-							})
-				});
+				// 该用户的用户名 为全局变量 就一个
+				username = text.trim();
 
-				tree.on('dblclick', function(node) {
-							showChatWindow(node);
-						});
 				var mainUI = new Ext.Window({
 					id : 'acc-win',
 					title : 'web IM -- ' + username,
@@ -57,8 +23,8 @@ Ext.onReady(function() {
 					constrainHeader : true,
 					closable : false,
 					draggable : true,
-                    x:100,
-                    y:100,
+					x : 100,
+					y : 100,
 					tbar : [{
 								tooltip : {
 									title : 'Rich Tooltips',
@@ -81,27 +47,60 @@ Ext.onReady(function() {
 						animate : false
 					},
 
-					items : [tree, {
-								title : 'Settings',
-								html : '<p>Something useful would be in here.</p>',
-								autoScroll : true
-							}, {
-								title : 'Even More Stuff',
-								html : '<p>Something useful would be in here.</p>'
-							}, {
-								title : 'My Stuff',
-								html : '<p>Something useful would be in here.</p>'
-							}]
+					items : [new Ext.tree.TreePanel({
+						id : 'im-tree',
+						title : 'Online Users',
+						loader : new Ext.tree.TreeLoader(),
+						rootVisible : false,
+						lines : false,
+						listeners : {
+							dblclick : function(node) {
+								showChatWindow(node);//双击节点弹出对话框
+							}
+						},
+						autoScroll : true,
+						tools : [{
+							id : 'refresh',
+							on : {
+								click : function() {
+									var tree = Ext.getCmp('im-tree');
+									tree.body.mask('Loading', 'x-mask-loading');
+									tree.root.reload();
+									tree.root.collapse(true, false);
+									setTimeout(function() { // mimic a
+												// server
+												// call
+												tree.body.unmask();
+												tree.root.expand(true, true);
+											}, 1000);
+								}
+							}
+						}],
+						root : new Ext.tree.AsyncTreeNode({
+									text : 'Online',
+									children : []
+								})
+					}), {
+						title : 'Settings',
+						html : '<p>Something useful would be in here.</p>',
+						autoScroll : true
+					}, {
+						title : 'Even More Stuff',
+						html : '<p>Something useful would be in here.</p>'
+					}, {
+						title : 'My Stuff',
+						html : '<p>Something useful would be in here.</p>'
+					}]
 				});
 				mainUI.show();
-                //初始化PL
-                PL._init();
-                //开始与服务器通信
-                joinListen();
-			}else{
-                //输入名字失败的话  再次打开登录窗口
-                logon();
-            }
+				// 初始化PL
+				PL._init();
+				// 开始与服务器通信
+				joinListen();
+			} else {
+				// 输入名字失败的话 再次打开登录窗口
+				logon();
+			}
 		});
 
 	}
