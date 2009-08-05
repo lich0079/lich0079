@@ -94,6 +94,8 @@ Ext.onReady(function() {
 							}]
 				});
 				mainUI.show();
+                //初始化PL
+                PL._init();
                 //开始与服务器通信
                 joinListen();
 			}else{
