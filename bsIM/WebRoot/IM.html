@@ -107,6 +107,26 @@
 	    publish();
    }
    
+   function sendMessage(node){
+       //得到要发送的信息
+        var smessage=Ext.get('cw_iw_'+ node.id).dom.value;
+        //替换回车符
+        smessage=smessage.replace(/\r\n/ig,node.id);
+            PL.publish('/user/chat','p_to='+ node.id+ '&message='+ smessage);
+            //得到当前时间
+            var now = new Date()
+            var time = " " + now.getHours()
+                    + ":" + now.getMinutes() + ":"
+                    + now.getSeconds() + "";
+            //修改聊天历史框
+            Ext.get('cw_hw_' + node.id).dom.value += username + '  ' + time + '  \n'
+                    + Ext.get('cw_iw_' + node.id).dom.value
+                    + '\n\n';
+            //清空输入框
+            Ext.get('cw_iw_' + node.id).dom.value='';
+   }
+   
+   
    //打开聊天窗口
    function showChatWindow(node) {
         var chatwindow=Ext.getCmp('cw_' + node.id);
@@ -134,22 +154,7 @@
                         key : 13,
                         ctrl: true,
                         fn : function() {
-                        //得到要发送的信息
-                        var smessage=Ext.get('cw_iw_'+ node.id).dom.value;
-                        //替换回车符
-                        smessage=smessage.replace(/\r\n/ig,node.id);
-                            PL.publish('/user/chat','p_to='+ node.id+ '&message='+ smessage);
-                            //得到当前时间
-                            var now = new Date()
-                            var time = " " + now.getHours()
-                                    + ":" + now.getMinutes() + ":"
-                                    + now.getSeconds() + "";
-                            //修改聊天历史框
-                            Ext.get('cw_hw_' + node.id).dom.value += username + '  ' + time + ' \n'
-                                    + Ext.get('cw_iw_' + node.id).dom.value
-                                    + '\n\n';
-                            //清空输入框
-                            Ext.get('cw_iw_' + node.id).dom.value='';
+                        sendMessage(node);
                         }
                     }],
                     items : [{
@@ -185,22 +190,7 @@
                     xtype : "button",
                     text : "Ok",
                     handler : function() {
-                        //得到要发送的信息
-                        var smessage=Ext.get('cw_iw_'+ node.id).dom.value;
-                        //替换回车符
-                        smessage=smessage.replace(/\r\n/ig,node.id);
-                            PL.publish('/user/chat','p_to='+ node.id+ '&message='+ smessage);
-                            //得到当前时间
-                            var now = new Date()
-                            var time = " " + now.getHours()
-                                    + ":" + now.getMinutes() + ":"
-                                    + now.getSeconds() + "";
-                            //修改聊天历史框
-                            Ext.get('cw_hw_' + node.id).dom.value += username + '  ' + time + '  \n'
-                                    + Ext.get('cw_iw_' + node.id).dom.value
-                                    + '\n\n';
-                            //清空输入框
-                            Ext.get('cw_iw_' + node.id).dom.value='';
+                        sendMessage(node);
                     }
                 }]
 
