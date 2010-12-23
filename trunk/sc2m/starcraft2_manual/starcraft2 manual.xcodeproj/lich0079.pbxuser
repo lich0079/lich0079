@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	1D3623240D0F684500981E51 /* starcraft2_manualAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {865, 606}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 484}";
+			sepNavWindowFrame = "{{15, 41}, {1034, 732}}";
+		};
+	};
+	1D3623250D0F684500981E51 /* starcraft2_manualAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1965, 1378}}";
+			sepNavSelRange = "{908, 0}";
+			sepNavVisRange = "{0, 1479}";
+			sepNavWindowFrame = "{{176, 46}, {1034, 732}}";
+		};
+	};
+	1D6058900D05DD3D006BFB54 /* starcraft2 manual */ = {
+		activeExec = 0;
+		executables = (
+			E31872F0120881A30088E9FE /* starcraft2 manual */,
+		);
+	};
+	28216C950DB411BC00E5133A /* FirstViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {865, 221}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 217}";
+			sepNavWindowFrame = "{{15, 41}, {1034, 732}}";
+		};
+	};
+	28216C960DB411BC00E5133A /* FirstViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {865, 832}}";
+			sepNavSelRange = "{136, 0}";
+			sepNavVisRange = "{208, 1211}";
+			sepNavWindowFrame = "{{38, 20}, {1034, 732}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = E31872F0120881A30088E9FE /* starcraft2 manual */;
+		activeTarget = 1D6058900D05DD3D006BFB54 /* starcraft2 manual */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* starcraft2 manual */,
+		);
+		breakpoints = (
+			E3313BDE12BFCECD00CD6FE0 /* starcraft2_manualAppDelegate.m:30 */,
+		);
+		codeSenseManager = E3187309120881B50088E9FE /* Code sense */;
+		executables = (
+			E31872F0120881A30088E9FE /* starcraft2 manual */,
+		);
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					687,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 314809984;
+			PBXWorkspaceStateSaveDate = 314809984;
+		};
+		perUserProjectItems = {
+			E32DCFCC12BFC58A00BCB3EB = E32DCFCC12BFC58A00BCB3EB /* PBXTextBookmark */;
+			E32DCFCE12BFC58A00BCB3EB = E32DCFCE12BFC58A00BCB3EB /* PBXTextBookmark */;
+			E3313C1712BFD4F700CD6FE0 = E3313C1712BFD4F700CD6FE0 /* PBXTextBookmark */;
+			E3313C2E12BFD7D400CD6FE0 = E3313C2E12BFD7D400CD6FE0 /* PBXBookmark */;
+			E3313C3712BFD89F00CD6FE0 = E3313C3712BFD89F00CD6FE0 /* PBXBookmark */;
+			E3313C3812BFD89F00CD6FE0 = E3313C3812BFD89F00CD6FE0 /* PBXBookmark */;
+			E3313C4212BFD91500CD6FE0 = E3313C4212BFD91500CD6FE0 /* PBXBookmark */;
+			E33595F412C39E8A00807193 /* PBXTextBookmark */ = E33595F412C39E8A00807193 /* PBXTextBookmark */;
+			E335960712C39F4800807193 /* PBXTextBookmark */ = E335960712C39F4800807193 /* PBXTextBookmark */;
+			E345BB3812BFC7F70083DFE3 = E345BB3812BFC7F70083DFE3 /* PBXTextBookmark */;
+			E345BB3912BFC7F70083DFE3 = E345BB3912BFC7F70083DFE3 /* PBXBookmark */;
+			E345BB3B12BFC7F70083DFE3 = E345BB3B12BFC7F70083DFE3 /* PBXBookmark */;
+			E345BB7A12BFCE410083DFE3 = E345BB7A12BFCE410083DFE3 /* PBXTextBookmark */;
+			E345BB7B12BFCE410083DFE3 = E345BB7B12BFCE410083DFE3 /* PBXTextBookmark */;
+			E34ED27612C39D6900A051F5 = E34ED27612C39D6900A051F5 /* PBXTextBookmark */;
+			E3F2FAF612C39E7100D1D7A7 = E3F2FAF612C39E7100D1D7A7 /* PBXTextBookmark */;
+		};
+		sourceControlManager = E3187308120881B50088E9FE /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {865, 221}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 306}";
+			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
+		};
+	};
+	E31872F0120881A30088E9FE /* starcraft2 manual */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "starcraft2 manual";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+		variableFormatDictionary = {
+			$cs = 1;
+			$ds = 1;
+			$eax = 1;
+			$ebp = 1;
+			$ebx = 1;
+			$ecx = 1;
+			$edi = 1;
+			$edx = 1;
+			$eflags = 1;
+			$eip = 1;
+			$es = 1;
+			$esi = 1;
+			$esp = 1;
+			$fs = 1;
+			$gs = 1;
+			$ss = 1;
+		};
+	};
+	E3187308120881B50088E9FE /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = google_sc2m;
+			};
+		};
+	};
+	E3187309120881B50088E9FE /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	E32DCFCC12BFC58A00BCB3EB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 306;
+		vrLoc = 0;
+	};
+	E32DCFCE12BFC58A00BCB3EB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28216C950DB411BC00E5133A /* FirstViewController.h */;
+		name = "FirstViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 217;
+		vrLoc = 0;
+	};
+	E32DCFD412BFC58A00BCB3EB /* IconDownloader.m */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.objc;
+		name = IconDownloader.m;
+		path = /Users/lich0079/Documents/LazyTableImages/Classes/IconDownloader.m;
+		sourceTree = "<absolute>";
+	};
+	E3313BDE12BFCECD00CD6FE0 /* starcraft2_manualAppDelegate.m:30 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = 1D3623250D0F684500981E51 /* starcraft2_manualAppDelegate.m */;
+		functionName = "-application:didFinishLaunchingWithOptions:";
+		hitCount = 1;
+		ignoreCount = 0;
+		lineNumber = 30;
+		location = "starcraft2 manual";
+		modificationTime = 314560781.798165;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	E3313C1712BFD4F700CD6FE0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E345BB5112BFCB3E0083DFE3 /* RootView.h */;
+		name = "RootView.h: 16";
+		rLen = 0;
+		rLoc = 221;
+		rType = 0;
+		vrLen = 227;
+		vrLoc = 0;
+	};
+	E3313C2E12BFD7D400CD6FE0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E3313C2A12BFD7B600CD6FE0 /* tool.png */;
+	};
+	E3313C3712BFD89F00CD6FE0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E345BB3112BFC71B0083DFE3 /* terran_48.gif */;
+	};
+	E3313C3812BFD89F00CD6FE0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E3313C3312BFD88A00CD6FE0 /* test.png */;
+	};
+	E3313C4212BFD91500CD6FE0 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E3313C3E12BFD90500CD6FE0 /* terran_20.png */;
+	};
+	E33595F412C39E8A00807193 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E345BB5212BFCB3E0083DFE3 /* RootView.m */;
+		name = "RootView.m: 22";
+		rLen = 378;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 125;
+	};
+	E335960712C39F4800807193 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E345BB5212BFCB3E0083DFE3 /* RootView.m */;
+		name = "RootView.m: 22";
+		rLen = 378;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 125;
+	};
+	E345BB3112BFC71B0083DFE3 /* terran_48.gif */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{15, 41}, {1034, 732}}";
+		};
+	};
+	E345BB3812BFC7F70083DFE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E32DCFD412BFC58A00BCB3EB /* IconDownloader.m */;
+		name = "IconDownloader.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1420;
+		vrLoc = 3896;
+	};
+	E345BB3912BFC7F70083DFE3 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E345BB3012BFC71B0083DFE3 /* protoss_48.gif */;
+	};
+	E345BB3B12BFC7F70083DFE3 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = E345BB3212BFC71B0083DFE3 /* zerg_48.gif */;
+	};
+	E345BB5112BFCB3E0083DFE3 /* RootView.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {865, 606}}";
+			sepNavSelRange = "{221, 0}";
+			sepNavVisRange = "{0, 227}";
+		};
+	};
+	E345BB5212BFCB3E0083DFE3 /* RootView.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{3962, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{4013, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{4063, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 4777}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {865, 2509}}";
+			sepNavSelRange = "{272, 378}";
+			sepNavVisRange = "{125, 923}";
+		};
+	};
+	E345BB7A12BFCE410083DFE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28216C960DB411BC00E5133A /* FirstViewController.m */;
+		name = "FirstViewController.m: 7";
+		rLen = 0;
+		rLoc = 136;
+		rType = 0;
+		vrLen = 1211;
+		vrLoc = 208;
+	};
+	E345BB7B12BFCE410083DFE3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* starcraft2_manualAppDelegate.h */;
+		name = "starcraft2_manualAppDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 484;
+		vrLoc = 0;
+	};
+	E34ED27612C39D6900A051F5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E345BB5212BFCB3E0083DFE3 /* RootView.m */;
+		name = "RootView.m: 22";
+		rLen = 378;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 125;
+	};
+	E3F2FAF612C39E7100D1D7A7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E345BB5212BFCB3E0083DFE3 /* RootView.m */;
+		name = "RootView.m: 22";
+		rLen = 378;
+		rLoc = 272;
+		rType = 0;
+		vrLen = 923;
+		vrLoc = 125;
+	};
+}
